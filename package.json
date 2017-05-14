@@ -27,6 +27,7 @@
     "expand-files": "^0.8.4",
     "gextend": "^0.3.0",
     "mkdir-promise": "^1.0.0",
-    "rmfr": "^1.0.2"
+    "rmfr": "^1.0.2",
+    "swig": "^1.4.2"
   }
 }
