@@ -1,0 +1,32 @@
+{
+  "name": "simple-project-generator",
+  "version": "0.0.0",
+  "description": "Simple Project generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goliatone/simple-project-generator.git"
+  },
+  "keywords": [
+    "generator",
+    "scaffolder",
+    "scaffold"
+  ],
+  "author": "goliatone <hello@goliatone.com> (http://goliatone.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goliatone/simple-project-generator/issues"
+  },
+  "homepage": "https://github.com/goliatone/simple-project-generator#readme",
+  "dependencies": {
+    "caporal": "^0.5.0",
+    "download-git-repo": "^1.0.0",
+    "expand-files": "^0.8.4",
+    "gextend": "^0.3.0",
+    "mkdir-promise": "^1.0.0",
+    "rmfr": "^1.0.2"
+  }
+}
