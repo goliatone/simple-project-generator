@@ -10,8 +10,8 @@ const GenerateCommand = require('../commands/generate');
 prog
     .version(pkg.version)
     .description(pkg.description)
-    .command('generate', 'Generate views from a JSON schema')
-    .argument('[source]', 'Path to directory with models', /.*/, GenerateCommand.DEFAULTS.source)
+    .command('new', 'Create a new project from a project template')
+    .argument('[template]', 'Template name, local or repository', /.*/, GenerateCommand.DEFAULTS.source)
     .argument('[output]', 'Filename for output.', /.*/, GenerateCommand.DEFAULTS.output)
     .option('--clean', 'Should the contents of [source] be removed before running', prog.BOOL, GenerateCommand.DEFAULTS.options.clean)
     .option('--save-gui-schema', 'Saves a copy of the intermediary GUI schema file', prog.BOOL, GenerateCommand.DEFAULTS.options.saveGuiSchema)
