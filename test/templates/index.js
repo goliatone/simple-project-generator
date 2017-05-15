@@ -1,4 +1,6 @@
-/*
- * Export module
+/**
+ * Export module %{name}%.
+ * 
+ * @type {Function}
  */
-module.exports = require('./lib/%{name}%');
+module.exports = require('./lib');
