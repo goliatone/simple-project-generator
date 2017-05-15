@@ -29,8 +29,22 @@
     "fs-exists-promised": "^0.2.0",
     "gextend": "^0.3.0",
     "inquirer": "^3.0.6",
+    "istextorbinary": "^2.1.0",
+    "jstransformer": "^1.0.0",
+    "jstransformer-swig": "^0.2.0",
     "mkdir-promise": "^1.0.0",
     "rmfr": "^1.0.2",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "tmp": "0.0.31",
+    "untildify": "^3.0.2"
+  },
+  "devDependencies": {
+    "bogota": "^2.0.4",
+    "nyc": "^10.3.2",
+    "sinon": "^2.2.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3",
+    "tape-catch": "^1.0.6",
+    "watch": "^1.0.2"
   }
 }
