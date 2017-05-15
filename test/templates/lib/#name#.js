@@ -1,5 +1,5 @@
 /**
- * %{author}%
+ * %{git.name}%
  * %{date}%
  * This is a file generated with love :)
  */

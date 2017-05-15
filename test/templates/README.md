@@ -6,4 +6,4 @@ $ npm i %{name}%
 ```
 
 ## License
-® License %{license}%
+® License %{license}% by %{git.name}%
