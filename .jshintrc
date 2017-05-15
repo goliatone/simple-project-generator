@@ -1,6 +1,7 @@
 {
     "bitwise": true,
     "camelcase": true,
+    "esversion": 6,
     "curly": false,
     "eqeqeq": true,
     "immed": true,
