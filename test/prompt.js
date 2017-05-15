@@ -3,13 +3,13 @@
 module.exports = [
     {
         type: 'input',
-        name: 'first_name',
-        message: 'What\'s your first name'
+        name: 'name',
+        message: 'What\'s the project\'s name'
     },
     {
         type: 'input',
-        name: 'last_name',
-        message: 'What\'s your last name',
+        name: 'license',
+        message: 'What\'s is the license',
         default: function () {
             return 'Doe';
         }
