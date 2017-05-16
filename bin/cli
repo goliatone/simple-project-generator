@@ -28,4 +28,38 @@ prog
         command.execute(args).catch(logger.error);
     });
 
+const AddTemplateCommand = require('../commands/add-template');
+prog
+    //$0 new ./example /tmp/core.io/output/#name#
+    .command(AddTemplateCommand.COMMAND_NAME, 'Create a new project from a project template')
+    .argument('[source]', 'Github username and project, path to local template', /.*/, AddTemplateCommand.DEFAULTS.source)
+    .argument('[alias]', 'Save template with [alias].', /.*/)
+    .option('--skip-cache', 'Force download template even if its cached.', prog.BOOL, AddTemplateCommand.DEFAULTS.options.skipCache)
+    .option('--templates <path>', '<path> to template files', null, AddTemplateCommand.DEFAULTS.options.templates)
+    .action((args, options, logger) => {
+
+        const command = new AddTemplateCommand({
+            logger: logger
+        });
+
+        args.options = options;
+
+        command.execute(args).catch(logger.error);
+    });
+
+const ListTemplatesCommand = require('../commands/list-templates');
+prog
+    .command(ListTemplatesCommand.COMMAND_NAME, 'Create a new project from a project template')
+    .option('--templates <path>', '<path> to template files', null, ListTemplatesCommand.DEFAULTS.options.templates)
+    .action((args, options, logger) => {
+
+        const command = new ListTemplatesCommand({
+            logger: logger
+        });
+
+        args.options = options;
+
+        command.execute(args).catch(logger.error);
+    });
+
 prog.parse(process.argv);
