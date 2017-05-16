@@ -43,9 +43,6 @@ GenerateCommand.DEFAULTS = {
     }
 };
 
+GenerateCommand.COMMAND_NAME = 'new';
+
 module.exports = GenerateCommand;
-// uri: './example',
-// -        dryRun: false,
-// -        alias: 'base-template',
-// -        target: '/tmp/core.io/output/#name#',
-// -        cachePath: '/tmp/core.io/templates',

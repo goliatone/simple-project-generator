@@ -6,6 +6,9 @@
   "scripts": {
     "test": "npm test"
   },
+  "bin": {
+    "spg": "./bin/cli"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goliatone/simple-project-generator.git"
