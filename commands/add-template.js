@@ -19,12 +19,13 @@ class AddTemplateCommand {
         o.templates = event.pathSolver(o.templates);
 
         let solver = new ProjectTemplate({
-            uri: event.source,
-            alias: event.alias,
-            cachePath: event.templates
+            cachePath: o.templates
         });
 
-        return solver.fetch();
+        return solver.fetch(event.source, {
+            alias: event.alias,
+            skipCache: o.skipCache
+        });
     }
 }
 
@@ -35,5 +36,7 @@ AddTemplateCommand.DEFAULTS = {
         templates: '~/.core.io/templates'
     }
 };
+
+AddTemplateCommand.COMMAND_NAME = 'add';
 
 module.exports = AddTemplateCommand;
