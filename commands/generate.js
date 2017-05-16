@@ -43,4 +43,6 @@ GenerateCommand.DEFAULTS = {
     }
 };
 
+GenerateCommand.COMMAND_NAME = 'new';
+
 module.exports = GenerateCommand;
