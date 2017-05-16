@@ -43,7 +43,22 @@ prog
         });
 
         args.options = options;
-logger.info(args);
+
+        command.execute(args).catch(logger.error);
+    });
+
+const ListTemplatesCommand = require('../commands/list-templates');
+prog
+    .command(ListTemplatesCommand.COMMAND_NAME, 'Create a new project from a project template')
+    .option('--templates <path>', '<path> to template files', null, ListTemplatesCommand.DEFAULTS.options.templates)
+    .action((args, options, logger) => {
+
+        const command = new ListTemplatesCommand({
+            logger: logger
+        });
+
+        args.options = options;
+
         command.execute(args).catch(logger.error);
     });
 
