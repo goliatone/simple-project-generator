@@ -10,7 +10,7 @@ prog
     .version(pkg.version)
     .description(pkg.description)
     //$0 new ./example /tmp/core.io/output/#name#
-    .command('new', 'Create a new project from a project template')
+    .command(GenerateCommand.COMMAND_NAME, 'Create a new project from a project template')
     .argument('[source]', 'Template name, local or repository', /.*/, GenerateCommand.DEFAULTS.source)
     .argument('[output]', 'Filename for output.', /.*/, GenerateCommand.DEFAULTS.output)
     .option('--clean', 'Should the contents of [source] be removed before running', prog.BOOL, GenerateCommand.DEFAULTS.options.clean)
