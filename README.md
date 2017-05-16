@@ -33,6 +33,7 @@ $ lbr new goliatone/app ./target/ --context ./path/context.json
 -> copy into target
 
 <!--
+https://github.com/ironSource/node-config-prompt
 https://www.npmjs.com/package/configstore
 https://github.com/jstransformers/jstransformer
 https://github.com/egoist/majo  
