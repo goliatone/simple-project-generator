@@ -10,13 +10,21 @@ prog
     .version(pkg.version)
     .description(pkg.description)
     //$0 new ./example /tmp/core.io/output/#name#
-    .command(GenerateCommand.COMMAND_NAME, 'Create a new project from a project template')
-    .argument('[source]', 'Template name, local or repository', /.*/, GenerateCommand.DEFAULTS.source)
-    .argument('[output]', 'Filename for output.', /.*/, GenerateCommand.DEFAULTS.output)
-    .option('--clean', 'Should the contents of [source] be removed before running', prog.BOOL, GenerateCommand.DEFAULTS.options.clean)
-    .option('--prompt-file', 'Prompt file for this project', prog.BOOL, GenerateCommand.DEFAULTS.options.saveGuiSchema)
-    .option('--dry-run', 'Prompt file for this project', prog.BOOL, GenerateCommand.DEFAULTS.options.saveGuiSchema)
-    .option('--templates <path>', '<path> to template files', null, GenerateCommand.DEFAULTS.options.templates)
+    .command(GenerateCommand.COMMAND_NAME,
+        'Create a new project from a project template')
+    .argument('[source]', 'Template name, local or repository', /.*/,
+        GenerateCommand.DEFAULTS.source)
+    .argument('[output]', 'Filename for output.', /.*/, GenerateCommand.DEFAULTS
+        .output)
+    .option('--clean',
+        'Should the contents of [source] be removed before running', prog.BOOL,
+        GenerateCommand.DEFAULTS.options.clean)
+    .option('--prompt-file', 'Prompt file for this project', prog.BOOL,
+        GenerateCommand.DEFAULTS.options.saveGuiSchema)
+    .option('--dry-run', 'Prompt file for this project', prog.BOOL,
+        GenerateCommand.DEFAULTS.options.saveGuiSchema)
+    .option('--templates <path>', '<path> to template files', null,
+        GenerateCommand.DEFAULTS.options.templates)
     .action((args, options, logger) => {
 
         const command = new GenerateCommand({
@@ -30,12 +38,16 @@ prog
 
 const AddTemplateCommand = require('../commands/add-template');
 prog
-    //$0 new ./example /tmp/core.io/output/#name#
-    .command(AddTemplateCommand.COMMAND_NAME, 'Create a new project from a project template')
-    .argument('[source]', 'Github username and project, path to local template', /.*/, AddTemplateCommand.DEFAULTS.source)
+//$0 new ./example /tmp/core.io/output/#name#
+    .command(AddTemplateCommand.COMMAND_NAME,
+        'Add a project template from github or a local directory')
+    .argument('[source]', 'Github username and project, path to local template',
+        /.*/, AddTemplateCommand.DEFAULTS.source)
     .argument('[alias]', 'Save template with [alias].', /.*/)
-    .option('--skip-cache', 'Force download template even if its cached.', prog.BOOL, AddTemplateCommand.DEFAULTS.options.skipCache)
-    .option('--templates <path>', '<path> to template files', null, AddTemplateCommand.DEFAULTS.options.templates)
+    .option('--skip-cache', 'Force download template even if its cached.', prog
+        .BOOL, AddTemplateCommand.DEFAULTS.options.skipCache)
+    .option('--templates <path>', '<path> to template files', null,
+        AddTemplateCommand.DEFAULTS.options.templates)
     .action((args, options, logger) => {
 
         const command = new AddTemplateCommand({
@@ -49,8 +61,9 @@ prog
 
 const ListTemplatesCommand = require('../commands/list-templates');
 prog
-    .command(ListTemplatesCommand.COMMAND_NAME, 'Create a new project from a project template')
-    .option('--templates <path>', '<path> to template files', null, ListTemplatesCommand.DEFAULTS.options.templates)
+    .command(ListTemplatesCommand.COMMAND_NAME, 'List available templates')
+    .option('--templates <path>', '<path> to template files', null,
+        ListTemplatesCommand.DEFAULTS.options.templates)
     .action((args, options, logger) => {
 
         const command = new ListTemplatesCommand({
