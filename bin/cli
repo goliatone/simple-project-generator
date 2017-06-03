@@ -36,6 +36,7 @@ prog
         command.execute(args)
             .then((context)=>{
                 logger.info('Generate command complete...');
+                //@BUG: This is due to opn not terminating?
                 process.exit(0);
             })
             .catch(logger.error);
