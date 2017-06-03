@@ -33,7 +33,12 @@ prog
 
         args.options = options;
 
-        command.execute(args).catch(logger.error);
+        command.execute(args)
+            .then((context)=>{
+                logger.info('Generate command complete...');
+                process.exit(0);
+            })
+            .catch(logger.error);
     });
 
 const AddTemplateCommand = require('../commands/add-template');
