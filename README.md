@@ -45,11 +45,19 @@ https://github.com/egoist/kopy
 -->
 
 TODO:
- - Ensure we pass context across all middleware
- - Ensure we return context across all middleware
- - Handle errors in middleware in a sane way:
+- [ ] When we copy a template project, we might need to npm install dependencies
+      form the prompt file.
+- [ ] Ensure we pass context across all middleware
+- [ ] Ensure we return context across all middleware
+- [ ] Handle errors in middleware in a sane way:
     - either return context with an error or return error with ref to context.
-- Copy/write file should preserve file permissions (for executables/scripts)
+- [ ] Copy/write file should preserve file permissions (for executables/scripts)
+- [ ] Normalize logging, add -verbose flag
+- [ ] Take a configuration object to skip prompt
+- [ ] Add option to symlink template on `add` command
+- [ ] Dry run should:
+    - not clean directory (delete files/folders)
+    - create new directories
 
 Middleware (tasks):
 * Should take in a context object.
