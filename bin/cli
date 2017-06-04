@@ -25,6 +25,8 @@ prog
         GenerateCommand.DEFAULTS.options.saveGuiSchema)
     .option('--templates <path>', '<path> to template files', null,
         GenerateCommand.DEFAULTS.options.templates)
+    .option('--symlink', 'Symlink the template, for development', null,
+        GenerateCommand.DEFAULTS.options.symlink)
     .action((args, options, logger) => {
 
         const command = new GenerateCommand({
