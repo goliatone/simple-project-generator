@@ -19,6 +19,7 @@ class AddTemplateCommand {
         o.templates = event.pathSolver(o.templates);
 
         let solver = new ProjectTemplate({
+            logger: this.logger,
             cachePath: o.templates
         });
 
