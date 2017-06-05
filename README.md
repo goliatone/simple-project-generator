@@ -45,6 +45,9 @@ https://github.com/egoist/kopy
 -->
 
 TODO:
+- [ ] Conditional files:
+    - [ ] When an option is selected some files get added
+- [ ] Create a random port number for REPL
 - [ ] When we copy a template project, we might need to npm install dependencies
       form the prompt file.
 - [ ] Ensure we pass context across all middleware
