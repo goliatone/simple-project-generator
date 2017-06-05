@@ -25,6 +25,8 @@ prog
         GenerateCommand.DEFAULTS.options.saveGuiSchema)
     .option('--templates <path>', '<path> to template files', null,
         GenerateCommand.DEFAULTS.options.templates)
+    .option('--symlink', 'Symlink the template, for development', null,
+        GenerateCommand.DEFAULTS.options.symlink)
     .action((args, options, logger) => {
 
         const command = new GenerateCommand({
@@ -33,7 +35,13 @@ prog
 
         args.options = options;
 
-        command.execute(args).catch(logger.error);
+        command.execute(args)
+            .then((context)=>{
+                logger.info('Generate command complete...');
+                //@BUG: This is due to opn not terminating?
+                process.exit(0);
+            })
+            .catch(logger.error);
     });
 
 const AddTemplateCommand = require('../commands/add-template');
