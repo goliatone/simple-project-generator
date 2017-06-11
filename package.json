@@ -47,6 +47,7 @@
     "path-type": "^2.0.0",
     "rmfr": "^1.0.2",
     "swig": "^1.4.2",
+    "symlink-or-copy": "^1.1.8",
     "tmp": "0.0.31",
     "untildify": "^3.0.2"
   },
