@@ -25,8 +25,6 @@ prog
         GenerateCommand.DEFAULTS.options.saveGuiSchema)
     .option('--templates <path>', '<path> to template files', null,
         GenerateCommand.DEFAULTS.options.templates)
-    .option('--symlink', 'Symlink the template, for development', null,
-        GenerateCommand.DEFAULTS.options.symlink)
     .action((args, options, logger) => {
 
         const command = new GenerateCommand({
@@ -49,7 +47,7 @@ prog
 //$0 new ./example /tmp/core.io/output/#name#
     .command(AddTemplateCommand.COMMAND_NAME,
         'Add a project template from github or a local directory')
-    .argument('[source]', 'Github username and project, path to local template',
+    .argument('[source]', 'Uri to template stored in github; username/project-name',
         /.*/, AddTemplateCommand.DEFAULTS.source)
     .argument('[alias]', 'Save template with [alias].', /.*/)
     .option('--skip-cache', 'Force download template even if its cached.', prog
@@ -75,6 +73,27 @@ prog
     .action((args, options, logger) => {
 
         const command = new ListTemplatesCommand({
+            logger: logger
+        });
+
+        args.options = options;
+
+        command.execute(args).catch(logger.error);
+    });
+
+const LinkTemplateCommand = require('../commands/link-template');
+prog
+    .command(LinkTemplateCommand.COMMAND_NAME, 'Link local template for development')
+    .argument('[source]', 'Path to local directory containing the template',
+        /.*/, AddTemplateCommand.DEFAULTS.source)
+    .argument('[alias]', 'Save template with [alias].', /.*/)
+    .option('--templates <path>', '<path> to template files', null,
+        LinkTemplateCommand.DEFAULTS.options.templates)
+    .option('--force', 'If destination template exists overwrite it', null,
+        LinkTemplateCommand.DEFAULTS.options.force)
+    .action((args, options, logger) => {
+
+        const command = new LinkTemplateCommand({
             logger: logger
         });
 
