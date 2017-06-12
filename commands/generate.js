@@ -2,6 +2,7 @@
 const extend = require('gextend');
 const Cookiecutter = require('../lib');
 const resolve = require('path').resolve;
+const untildify = require('untildify');
 
 class GenerateCommand {
 
@@ -12,12 +13,14 @@ class GenerateCommand {
     execute(event) {
         event = extend({}, GenerateCommand.DEFAULTS, event);
 
-        event.source = event.pathSolver(event.source);
+        // event.source = event.pathSolver(event.source);
         event.output = event.pathSolver(event.output);
 
         let o = event.options;
 
+        o.templates = untildify(o.templates);
         o.templates = event.pathSolver(o.templates);
+        console.log('templates path', o.templates);
 
         let solver = new Cookiecutter();
 

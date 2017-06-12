@@ -4,41 +4,42 @@ const ProjectTemplate = require('../lib/project-template');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
 
-class ListTemplatesCommand {
+class LinkTemplateCommand {
 
     constructor(options = {}) {
         extend(this, options);
     }
 
     execute(event) {
-        event = extend({}, ListTemplatesCommand.DEFAULTS, event);
+        event = extend({}, LinkTemplateCommand.DEFAULTS, event);
 
         let o = event.options;
 
         o.templates = untildify(o.templates);
         o.templates = event.pathSolver(o.templates);
 
+        event.source = untildify(event.source);
+        event.source = event.pathSolver(event.source);
+
         let solver = new ProjectTemplate({
             logger: this.logger,
             cachePath: o.templates
         });
 
-        return solver.list(o).then((templates)=>{
-            this.logger.info('Templates:');
-            this.logger.info(templates);
-            this.logger.info();
-            return templates;
+        return solver.link(event.source, {
+            alias: event.alias
         });
     }
 }
 
-ListTemplatesCommand.DEFAULTS = {
+LinkTemplateCommand.DEFAULTS = {
     pathSolver: resolve,
     options: {
+        force: false,
         templates: '~/.core.io/templates'
     }
 };
 
-ListTemplatesCommand.COMMAND_NAME = 'list';
+LinkTemplateCommand.COMMAND_NAME = 'link';
 
-module.exports = ListTemplatesCommand;
+module.exports = LinkTemplateCommand;
