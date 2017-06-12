@@ -30,6 +30,7 @@
     "enfscopy-promise": "^1.0.0",
     "execa": "^0.6.3",
     "expand-files": "^0.8.4",
+    "figlet": "^1.2.0",
     "fs-exists-promised": "^0.2.0",
     "gextend": "^0.3.0",
     "git-config-path": "^1.0.1",
