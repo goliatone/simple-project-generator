@@ -1,22 +1,33 @@
+# Simple Project Generator
+
+Simple command line utility to create projects from project templates.
+
+This project is inspired by the awesome [Cookiecutter][cookiecutter].
+
+### Installing Templates
 
 ```
-$ lbr new app
+$ spg add goliatone/core.io-starter-template core
+$ spg add goliatone/core.io-module-template module --skip-cache
+```
+
+### Create a new project
+
+```
+$ spg new core ./myProject/ --context ./path/context.json
+```
+
+
+```
+$ spg new app
 ```
 
 ```
-$ lbr new goliatone/app
+$ spg new goliatone/app
 ```
 
 ```
-$ lbr new goliatone/app ./target/
-```
-
-```
-$ lbr new goliatone/app ./target/ --context ./path/context.json
-```
-
-```
-$ ./bin/cli add goliatone/core.io-starter-template core     
+$ spg new goliatone/app ./target/
 ```
 
 -> search template:
@@ -68,3 +79,15 @@ Middleware (tasks):
     * Should resolve the same context object, but augmented/transformed.
     * Should reject with the same context but adding an error in the form:
         context.errors[middleware.id] = [err1, err2... errN];
+
+## Templates
+
+### Engine
+
+It uses the [jstransformer][jstransformer] [jstransformer-swig][jstransformer-swig] for [swig][swig]
+
+
+[swig]:https://node-swig.github.io/swig-templates
+[jstransformer]:https://github.com/jstransformers/jstransformer
+[jstransformer-swig]:https://github.com/jstransformers/jstransformer-swig
+[cookiecutter]:https://github.com/audreyr/cookiecutter
