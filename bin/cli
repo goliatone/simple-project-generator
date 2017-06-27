@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
 'use strict';
+const pkg = require('../package.json');
+const updateNotifier = require('update-notifier');
+updateNotifier({
+    pkg: pkg
+}).notify();
+
 
 const prog = require('caporal');
-const pkg = require('../package.json');
 const GenerateCommand = require('../commands/generate');
 
 prog
@@ -34,7 +39,7 @@ prog
         args.options = options;
 
         command.execute(args)
-            .then((context)=>{
+            .then((context) => {
                 logger.info('Generate command complete...');
                 //@BUG: This is due to opn not terminating?
                 process.exit(0);
@@ -47,7 +52,8 @@ prog
 //$0 new ./example /tmp/core.io/output/#name#
     .command(AddTemplateCommand.COMMAND_NAME,
         'Add a project template from github or a local directory')
-    .argument('[source]', 'Uri to template stored in github; username/project-name',
+    .argument('[source]',
+        'Uri to template stored in github; username/project-name',
         /.*/, AddTemplateCommand.DEFAULTS.source)
     .argument('[alias]', 'Save template with [alias].', /.*/)
     .option('--skip-cache', 'Force download template even if its cached.', prog
@@ -83,7 +89,8 @@ prog
 
 const LinkTemplateCommand = require('../commands/link-template');
 prog
-    .command(LinkTemplateCommand.COMMAND_NAME, 'Link local template for development')
+    .command(LinkTemplateCommand.COMMAND_NAME,
+        'Link local template for development')
     .argument('[source]', 'Path to local directory containing the template',
         /.*/, AddTemplateCommand.DEFAULTS.source)
     .argument('[alias]', 'Save template with [alias].', /.*/)
