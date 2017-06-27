@@ -1,7 +1,7 @@
 {
   "name": "simple-project-generator",
   "version": "0.2.4",
-  "description": "Simple Project generator",
+  "description": "Simple Project Generator",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
