@@ -50,7 +50,8 @@
     "swig": "^1.4.2",
     "symlink-or-copy": "^1.1.8",
     "tmp": "0.0.31",
-    "untildify": "^3.0.2"
+    "untildify": "^3.0.2",
+    "update-notifier": "^2.2.0"
   },
   "devDependencies": {
     "bogota": "^2.0.4",
