@@ -17,7 +17,7 @@ prog
     //$0 new ./example /tmp/core.io/output/#name#
     .command(GenerateCommand.COMMAND_NAME,
         'Create a new project from a project template')
-    .argument('[source]', 'Template name, local or repository', /.*/,
+    .argument('[template]', 'Template name, local or repository', /.*/,
         GenerateCommand.DEFAULTS.source)
     .argument('[output]', 'Filename for output.', /.*/, GenerateCommand.DEFAULTS
         .output)
