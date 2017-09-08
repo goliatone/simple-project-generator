@@ -3,10 +3,10 @@
 'use strict';
 const pkg = require('../package.json');
 const updateNotifier = require('update-notifier');
+
 updateNotifier({
     pkg: pkg
 }).notify();
-
 
 const prog = require('caporal');
 const GenerateCommand = require('../commands/generate');
@@ -17,7 +17,7 @@ prog
     //$0 new ./example /tmp/core.io/output/#name#
     .command(GenerateCommand.COMMAND_NAME,
         'Create a new project from a project template')
-    .argument('[template]', 'Template name, local or repository', /.*/,
+    .argument('<template>', 'Template name, local or repository', /.*/,
         GenerateCommand.DEFAULTS.source)
     .argument('[output]', 'Filename for output.', /.*/, GenerateCommand.DEFAULTS
         .output)
