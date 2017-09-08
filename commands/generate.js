@@ -13,7 +13,7 @@ class GenerateCommand {
     execute(event) {
         event = extend({}, GenerateCommand.DEFAULTS, event);
 
-        // event.source = event.pathSolver(event.source);
+        // event.template = event.pathSolver(event.template);
         event.output = event.pathSolver(event.output);
 
         let o = event.options;
@@ -25,7 +25,7 @@ class GenerateCommand {
         let solver = new Cookiecutter();
 
         return solver.run({
-            uri: event.source,
+            uri: event.template,
             target: event.output,
             // alias: 'base-template',
             dryRun: o.dryRun,
@@ -36,7 +36,7 @@ class GenerateCommand {
 
 GenerateCommand.DEFAULTS = {
     output: './output',
-    source: '',
+    template: '',
     pathSolver: resolve,
     options: {
         clean: false,
