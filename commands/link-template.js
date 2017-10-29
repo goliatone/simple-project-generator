@@ -1,10 +1,15 @@
 'use strict';
-const extend = require('gextend');
+//@ts-check
+
+const BaseCommand = require('./base');
 const ProjectTemplate = require('../lib/project-template');
+const AddTemplateCommand = require('./add-template');
+
+const extend = require('gextend');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
 
-class LinkTemplateCommand {
+class LinkTemplateCommand extends BaseCommand {
 
     constructor(options = {}) {
         extend(this, options);
@@ -30,6 +35,31 @@ class LinkTemplateCommand {
             alias: event.alias
         });
     }
+
+    static describe(prog, cmd){
+        cmd.argument('[source]', 
+            'Path to local directory containing the template',
+            /.*/, 
+            AddTemplateCommand.DEFAULTS.source
+        );
+
+        cmd.argument('[alias]', 
+            'Save template with [alias].', 
+            /.*/
+        );
+
+        cmd.option('--templates <path>', 
+            '<path> to template files', 
+            null,
+            LinkTemplateCommand.DEFAULTS.options.templates
+        );
+
+        cmd.option('--force', 
+            'If destination template exists overwrite it', 
+            null,
+            LinkTemplateCommand.DEFAULTS.options.force
+        );
+    }
 }
 
 LinkTemplateCommand.DEFAULTS = {
@@ -41,5 +71,6 @@ LinkTemplateCommand.DEFAULTS = {
 };
 
 LinkTemplateCommand.COMMAND_NAME = 'link';
+LinkTemplateCommand.DESCRIPTION = 'Link local template for development';
 
 module.exports = LinkTemplateCommand;
