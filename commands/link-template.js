@@ -11,10 +11,6 @@ const untildify = require('untildify');
 
 class LinkTemplateCommand extends BaseCommand {
 
-    constructor(options = {}) {
-        extend(this, options);
-    }
-
     execute(event) {
         event = extend({}, LinkTemplateCommand.DEFAULTS, event);
 
@@ -37,6 +33,7 @@ class LinkTemplateCommand extends BaseCommand {
     }
 
     static describe(prog, cmd){
+
         cmd.argument('[source]', 
             'Path to local directory containing the template',
             /.*/, 
