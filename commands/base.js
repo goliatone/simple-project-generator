@@ -1,14 +1,14 @@
 'use strict';
 //@ts-check
 
-// const extend = require('gextend');
+const extend = require('gextend');
 // const Paths = require('../lib/cli-paths');
-// const ChildProcess = require('child-process-promise');
+const ChildProcess = require('child-process-promise');
 
 class BaseCommand {
 
-    constructor(options){
-        this.logger = options.logger || console;
+    constructor(options={}){
+        extend(this, options);
         // this.paths = new Paths();
     }
 
@@ -18,61 +18,61 @@ class BaseCommand {
         });
     }
 
-    // ready(){
-    //     if(this.useSudo) {
-    //         if(process.env.USER !== 'root'){
-    //             this.error('This command must run via sudo.');
-    //         } else if(!process.env.SUDO_USER || process.env.USER === process.env.SUDO_USER) {
-    //             this.error('This command must run via sudo, not as root.');
-    //         }
-    //     } else if(process.env.USER === 'root') {
-    //         this.error('This command cant be run as root.');
-    //     }
+    ready(){
+        if(this.useSudo) {
+            if(process.env.USER !== 'root'){
+                this.error('This command must run via sudo.');
+            } else if(!process.env.SUDO_USER || process.env.USER === process.env.SUDO_USER) {
+                this.error('This command must run via sudo, not as root.');
+            }
+        } else if(process.env.USER === 'root') {
+            this.error('This command cant be run as root.');
+        }
 
-    //     return this;
-    // }
+        return this;
+    }
 
-    // commandExists(command){
-    //     return ChildProcess.exec(`/usr/bin/which ${command}`)
-    //         .then(() => true)
-    //         .catch(() => false);
-    // }
+    commandExists(command){
+        return ChildProcess.exec(`/usr/bin/which ${command}`)
+            .then(() => true)
+            .catch(() => false);
+    }
 
-    // exec(command, options){
-    //     if(this.dryRun){
-    //         return this.logger.info(command, options);
-    //     }
-    //     return ChildProcess.exec(command, options);
-    // }
+    exec(command, options){
+        if(this.dryRun){
+            return this.logger.info(command, options);
+        }
+        return ChildProcess.exec(command, options);
+    }
 
-    // execAsUser(command, options){
-    //     if(process.env.USER !== 'root'){
-    //         return this.exec(command, options);
-    //     }
+    execAsUser(command, options){
+        if(process.env.USER !== 'root'){
+            return this.exec(command, options);
+        }
 
-    //     return this.exec(`sudo -u "${process.env.SUDO_USER}" ${command}`, options);
-    // }
+        return this.exec(`sudo -u "${process.env.SUDO_USER}" ${command}`, options);
+    }
 
-    // error(msg, code=1){
-    //     this.logger.error(msg);
-    //     process.exit(code);
-    // }
+    error(msg, code=1){
+        this.logger.error(msg);
+        process.exit(code);
+    }
 
-    // get useSudo(){
-    //     return !!this._sudo;
-    // }
+    get useSudo(){
+        return !!this._sudo;
+    }
 
-    // set useSudo(v){
-    //     this._sudo = v;
-    // }
+    set useSudo(v){
+        this._sudo = v;
+    }
 
-    // get dryRun(){
-    //     return !!this._dryRun;
-    // }
+    get dryRun(){
+        return !!this._dryRun;
+    }
 
-    // set dryRun(v){
-    //     this._dryRun = v;
-    // }
+    set dryRun(v){
+        this._dryRun = v;
+    }
 
     static attach(prog, namespace=false){
         const name = (namespace ? namespace + ' ' : '') + this.COMMAND_NAME; 
