@@ -8,10 +8,6 @@ const untildify = require('untildify');
 
 class ListTemplatesCommand extends BaseCommand {
 
-    constructor(options = {}) {
-        extend(this, options);
-    }
-
     execute(event) {
         event = extend({}, ListTemplatesCommand.DEFAULTS, event);
 
