@@ -1,7 +1,8 @@
 'use strict';
 
 const extend = require('gextend');
-const BaseCommand = require('./base');
+const BaseCommand = require('base-cli-commands').BaseCommand;
+
 const ProjectTemplate = require('../lib/project-template');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
