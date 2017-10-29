@@ -4,7 +4,8 @@
   "description": "Simple Project Generator",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "bogota",
+    "dtest": "watch bogota test/"
   },
   "bin": {
     "spg": "./bin/cli"
