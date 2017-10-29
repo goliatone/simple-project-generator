@@ -1,10 +1,13 @@
 'use strict';
+//@ts-check
+
+const BaseCommand = require('./base');
 const extend = require('gextend');
 const Cookiecutter = require('../lib');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
 
-class GenerateCommand {
+class GenerateCommand extends BaseCommand {
 
     constructor(options = {}) {
         extend(this, options);
@@ -32,6 +35,46 @@ class GenerateCommand {
             cachePath: o.templates,
         });
     }
+
+    static describe(prog, cmd){
+        cmd.command(GenerateCommand.COMMAND_NAME,
+            'Create a new project from a project template')
+    
+        cmd.argument('<template>', 
+            'Template name, local or repository', 
+            /.*/,
+            GenerateCommand.DEFAULTS.source
+        );
+
+        cmd.argument('[output]', 
+            'Filename for output.', 
+            /.*/, 
+            GenerateCommand.DEFAULTS.output
+        );
+        
+        cmd.option('--clean',
+            'Should the contents of [source] be removed before running', 
+            prog.BOOL,
+            GenerateCommand.DEFAULTS.options.clean
+        );
+        
+        cmd.option('--prompt-file', 
+            'Prompt file for this project', 
+            prog.BOOL,
+            GenerateCommand.DEFAULTS.options.saveGuiSchema);
+        
+        cmd.option('--dry-run', 
+            'Prompt file for this project', 
+            prog.BOOL,
+            GenerateCommand.DEFAULTS.options.saveGuiSchema
+        );
+        
+        cmd.option('--templates <path>', 
+            '<path> to template files', 
+            null,
+            GenerateCommand.DEFAULTS.options.templates
+        );
+    }
 }
 
 GenerateCommand.DEFAULTS = {
@@ -47,5 +90,6 @@ GenerateCommand.DEFAULTS = {
 };
 
 GenerateCommand.COMMAND_NAME = 'new';
+GenerateCommand.DESCRIPTION = 'Create a new project from a project template';
 
 module.exports = GenerateCommand;
