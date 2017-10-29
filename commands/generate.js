@@ -9,10 +9,6 @@ const untildify = require('untildify');
 
 class GenerateCommand extends BaseCommand {
 
-    constructor(options = {}) {
-        extend(this, options);
-    }
-
     execute(event) {
         event = extend({}, GenerateCommand.DEFAULTS, event);
 
@@ -37,9 +33,7 @@ class GenerateCommand extends BaseCommand {
     }
 
     static describe(prog, cmd){
-        cmd.command(GenerateCommand.COMMAND_NAME,
-            'Create a new project from a project template')
-    
+
         cmd.argument('<template>', 
             'Template name, local or repository', 
             /.*/,
