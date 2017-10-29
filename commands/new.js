@@ -1,7 +1,8 @@
 'use strict';
 //@ts-check
 
-const BaseCommand = require('./base');
+const BaseCommand = require('base-cli-commands').BaseCommand;
+
 const extend = require('gextend');
 const Cookiecutter = require('../lib');
 const resolve = require('path').resolve;
