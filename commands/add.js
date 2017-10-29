@@ -28,10 +28,9 @@ class AddTemplateCommand extends BaseCommand {
     }
 
     static describe(prog, cmd){
-        cmd.argument('[source]',
+        cmd.argument('<source>',
             'Uri to template stored in github; username/project-name',
-            /.*/, 
-            AddTemplateCommand.DEFAULTS.source
+            /.*/
         );
         
         cmd.argument('[alias]', 'Save template with [alias].', /.*/);
