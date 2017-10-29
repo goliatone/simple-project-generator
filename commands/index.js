@@ -1,9 +1,9 @@
 'use strict';
 
-const Add = require('./add-template');
-const New = require('./generate');
-const Link = require('./link-template');
-const List = require('./list-templates');
+const Add = require('./add');
+const New = require('./new');
+const Link = require('./link');
+const List = require('./list');
 
 module.exports.attach = function(prog, namespace=false) {
     Add.attach(prog, namespace);
