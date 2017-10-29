@@ -1,7 +1,7 @@
 'use strict';
 //@ts-check
 
-const BaseCommand = require('./base');
+const BaseCommand = require('base-cli-commands').BaseCommand;
 const ProjectTemplate = require('../lib/project-template');
 
 const extend = require('gextend');
