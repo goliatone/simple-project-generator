@@ -1,14 +1,12 @@
 'use strict';
+
 const extend = require('gextend');
+const BaseCommand = require('./base');
 const ProjectTemplate = require('../lib/project-template');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
 
-class AddTemplateCommand {
-
-    constructor(options = {}) {
-        extend(this, options);
-    }
+class AddTemplateCommand extends BaseCommand {
 
     execute(event) {
         event = extend({}, AddTemplateCommand.DEFAULTS, event);
@@ -28,6 +26,28 @@ class AddTemplateCommand {
             skipCache: o.skipCache
         });
     }
+
+    static describe(prog, cmd){
+        cmd.argument('[source]',
+            'Uri to template stored in github; username/project-name',
+            /.*/, 
+            AddTemplateCommand.DEFAULTS.source
+        );
+        
+        cmd.argument('[alias]', 'Save template with [alias].', /.*/);
+
+        cmd.option('--skip-cache', 
+            'Force download template even if its cached.', 
+            prog.BOOL, 
+            AddTemplateCommand.DEFAULTS.options.skipCache
+        );
+
+        cmd.option('--templates <path>', 
+            '<path> to template files', 
+            null,
+            AddTemplateCommand.DEFAULTS.options.templates
+        );
+    }
 }
 
 AddTemplateCommand.DEFAULTS = {
@@ -39,5 +59,6 @@ AddTemplateCommand.DEFAULTS = {
 };
 
 AddTemplateCommand.COMMAND_NAME = 'add';
+AddTemplateCommand.DESCRIPTION = 'Add a project template from github or a local directory';
 
 module.exports = AddTemplateCommand;
