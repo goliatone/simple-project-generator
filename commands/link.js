@@ -3,7 +3,7 @@
 
 const BaseCommand = require('./base');
 const ProjectTemplate = require('../lib/project-template');
-const AddTemplateCommand = require('./add-template');
+const AddTemplateCommand = require('./add');
 
 const extend = require('gextend');
 const resolve = require('path').resolve;
