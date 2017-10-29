@@ -1,10 +1,12 @@
 'use strict';
+//@ts-check
 const extend = require('gextend');
+const BaseCommand = require('./base');
 const ProjectTemplate = require('../lib/project-template');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
 
-class ListTemplatesCommand {
+class ListTemplatesCommand extends BaseCommand {
 
     constructor(options = {}) {
         extend(this, options);
@@ -30,6 +32,14 @@ class ListTemplatesCommand {
             return templates;
         });
     }
+
+    static describe(prog, cmd){
+        cmd.option('--templates <path>', 
+            '<path> to template files', 
+            null,
+            ListTemplatesCommand.DEFAULTS.options.templates
+        );
+    }
 }
 
 ListTemplatesCommand.DEFAULTS = {
@@ -40,5 +50,6 @@ ListTemplatesCommand.DEFAULTS = {
 };
 
 ListTemplatesCommand.COMMAND_NAME = 'list';
+ListTemplatesCommand.DESCRIPTION = 'List available templates';
 
 module.exports = ListTemplatesCommand;
