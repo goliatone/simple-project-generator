@@ -56,10 +56,10 @@ https://github.com/egoist/kopy
 -->
 
 TODO:
-- [ ] Conditional files:
-    - [ ] When an option is selected some files get added
-- [ ] Create a random port number for REPL
-- [ ] When we copy a template project, we might need to npm install dependencies
+- [x] Conditional files:
+    - [x] When an option is selected some files get added
+- [x] Create a random port number for REPL
+- [x] When we copy a template project, we might need to npm install dependencies
       form the prompt file.
 - [ ] Ensure we pass context across all middleware
 - [ ] Ensure we return context across all middleware
@@ -81,6 +81,10 @@ Middleware (tasks):
         context.errors[middleware.id] = [err1, err2... errN];
 
 ## Templates
+
+### Conditional files
+In some instances we might include some files, directories, or `npm` dependencies based on some user input. For those cases we can use **optional files**.
+
 
 ### Engine
 
