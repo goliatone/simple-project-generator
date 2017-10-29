@@ -26,9 +26,7 @@
   },
   "homepage": "https://github.com/goliatone/simple-project-generator#readme",
   "dependencies": {
-    "base-cli-commands": "*",
-    "caporal": "^0.5.0",
-    "child-process-promise": "^2.2.1",
+    "base-cli-commands": "0.0.3",
     "download-git-repo": "^1.0.0",
     "enfscopy-promise": "^1.0.0",
     "execa": "^0.6.3",
@@ -53,8 +51,7 @@
     "swig": "^1.4.2",
     "symlink-or-copy": "^1.1.8",
     "tmp": "0.0.31",
-    "untildify": "^3.0.2",
-    "update-notifier": "^2.2.0"
+    "untildify": "^3.0.2"
   },
   "devDependencies": {
     "bogota": "^2.0.4",
