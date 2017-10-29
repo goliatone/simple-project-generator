@@ -3,7 +3,6 @@
 
 const BaseCommand = require('./base');
 const ProjectTemplate = require('../lib/project-template');
-const AddTemplateCommand = require('./add');
 
 const extend = require('gextend');
 const resolve = require('path').resolve;
@@ -34,10 +33,9 @@ class LinkTemplateCommand extends BaseCommand {
 
     static describe(prog, cmd){
 
-        cmd.argument('[source]', 
+        cmd.argument('<source>', 
             'Path to local directory containing the template',
-            /.*/, 
-            AddTemplateCommand.DEFAULTS.source
+            /.*/
         );
 
         cmd.argument('[alias]', 
