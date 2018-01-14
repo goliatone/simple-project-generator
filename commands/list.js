@@ -7,7 +7,6 @@ const resolve = require('path').resolve;
 const untildify = require('untildify');
 
 class ListTemplatesCommand extends BaseCommand {
-
     execute(event) {
         event = extend({}, ListTemplatesCommand.DEFAULTS, event);
 
@@ -21,17 +20,23 @@ class ListTemplatesCommand extends BaseCommand {
             cachePath: o.templates
         });
 
-        return solver.list(o).then((templates)=>{
-            this.logger.info('Templates:');
-            this.logger.info(templates);
-            this.logger.info();
+        return solver.list(o).then((templates=[])=> {
+            if(templates.length === 0) {
+                this.logger.info('No templates available.');
+            } else {
+                this.logger.info('Templates:');
+                this.logger.info(templates);
+                this.logger.info();
+            }
+            
             return templates;
         });
     }
 
-    static describe(prog, cmd){
-        cmd.option('--templates <path>', 
-            '<path> to template files', 
+    static describe(prog, cmd) {
+        cmd.option(
+            '--templates <path>',
+            '<path> to template files',
             null,
             ListTemplatesCommand.DEFAULTS.options.templates
         );
