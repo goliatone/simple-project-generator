@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/goliatone/simple-project-generator#readme",
   "dependencies": {
-    "base-cli-commands": "0.0.3",
+    "base-cli-commands": "*",
     "download-git-repo": "^1.0.0",
     "enfscopy-promise": "^1.0.0",
     "execa": "^0.6.3",
