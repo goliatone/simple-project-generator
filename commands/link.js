@@ -27,30 +27,31 @@ class LinkTemplateCommand extends BaseCommand {
         });
 
         return solver.link(event.source, {
-            alias: event.alias
+            alias: event.alias,
+            force: !!o.force
         });
     }
 
-    static describe(prog, cmd){
+    static describe(prog, cmd) {
 
-        cmd.argument('<source>', 
+        cmd.argument('<source>',
             'Path to local directory containing the template',
             /.*/
         );
 
-        cmd.argument('[alias]', 
-            'Save template with [alias].', 
+        cmd.argument('[alias]',
+            'Save template with [alias].',
             /.*/
         );
 
-        cmd.option('--templates <path>', 
-            '<path> to template files', 
+        cmd.option('--templates <path>',
+            '<path> to template files',
             null,
             LinkTemplateCommand.DEFAULTS.options.templates
         );
 
-        cmd.option('--force', 
-            'If destination template exists overwrite it', 
+        cmd.option('--force',
+            'If destination template exists overwrite it',
             null,
             LinkTemplateCommand.DEFAULTS.options.force
         );
