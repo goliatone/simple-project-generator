@@ -25,25 +25,27 @@ class AddTemplateCommand extends BaseCommand {
         return solver.fetch(event.source, {
             alias: event.alias,
             skipCache: o.skipCache
+        }).then(_ => {
+            this.logger.info('√ Template successfully added');
         });
     }
 
-    static describe(prog, cmd){
+    static describe(prog, cmd) {
         cmd.argument('<source>',
             'Uri to template stored in github; username/project-name',
             /.*/
         );
-        
+
         cmd.argument('[alias]', 'Save template with [alias].', /.*/);
 
-        cmd.option('--skip-cache', 
-            'Force download template even if its cached.', 
-            prog.BOOL, 
+        cmd.option('--skip-cache',
+            'Force download template even if its cached.',
+            prog.BOOL,
             AddTemplateCommand.DEFAULTS.options.skipCache
         );
 
-        cmd.option('--templates <path>', 
-            '<path> to template files', 
+        cmd.option('--templates <path>',
+            '<path> to template files',
             null,
             AddTemplateCommand.DEFAULTS.options.templates
         );
