@@ -52,7 +52,7 @@ class LinkTemplateCommand extends BaseCommand {
 
         cmd.option('--force',
             'If destination template exists overwrite it',
-            null,
+            prog.BOOL,
             LinkTemplateCommand.DEFAULTS.options.force
         );
     }
