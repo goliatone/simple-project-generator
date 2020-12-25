@@ -61,6 +61,8 @@ TODO:
 - [x] Create a random port number for REPL
 - [x] When we copy a template project, we might need to npm install dependencies
       form the prompt file.
+- [ ] Add update command
+- [ ] Add list-remote command
 - [ ] Ensure we pass context across all middleware
 - [ ] Ensure we return context across all middleware
 - [ ] Handle errors in middleware in a sane way:
