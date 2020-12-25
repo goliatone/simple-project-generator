@@ -27,6 +27,8 @@ class AddTemplateCommand extends BaseCommand {
             skipCache: o.skipCache
         }).then(_ => {
             this.logger.info('√ Template successfully added');
+        }).catch(error => {
+            this.logger.info('† Error adding template');
         });
     }
 
