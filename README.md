@@ -90,6 +90,12 @@ If you want to add template filters from a task you should set it in the context
 KeyPath.set(context, 'config.template.options.filters', { formatDate });
 ```
 
+Then it would be used as:
+
+```ejs
+%{date.raw | formatDate }%
+```
+
 ### Conditional files
 In some instances we might include some files, directories, or `npm` dependencies based on some user input. For those cases we can use **optional files**.
 
