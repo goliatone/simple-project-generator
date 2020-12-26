@@ -1,6 +1,6 @@
 {
   "name": "simple-project-generator",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Simple Project Generator",
   "main": "index.js",
   "scripts": {
