@@ -36,6 +36,7 @@
     "fs-exists-promised": "^0.2.0",
     "gextend": "^0.3.0",
     "git-config-path": "^1.0.1",
+    "gkeypath": "^0.11.0",
     "inquirer": "^3.0.6",
     "inquirer-autocomplete-prompt": "^0.8.0",
     "inquirer-directory": "^2.1.0",
@@ -45,6 +46,7 @@
     "jstransformer": "^1.0.0",
     "jstransformer-swig": "^0.2.0",
     "mkdir-promise": "^1.0.0",
+    "moment": "^2.29.1",
     "noop-console": "^0.6.0",
     "opn": "^5.0.0",
     "parse-git-config": "^1.1.1",
@@ -52,7 +54,7 @@
     "rmfr": "^1.0.2",
     "swig": "^1.4.2",
     "symlink-or-copy": "^1.1.8",
-    "tmp": "0.0.31",
+    "tmp": "^0.0.31",
     "untildify": "^3.0.2"
   },
   "devDependencies": {
