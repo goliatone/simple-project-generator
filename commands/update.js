@@ -36,6 +36,8 @@ class UpdateTemplateCommand extends BaseCommand {
             /.*/
         );
 
+        cmd.argument('[alias]', 'Save template with [alias].', /.*/);
+
         cmd.option('--skip-cache',
             'Force download template even if its cached.',
             prog.BOOL,
