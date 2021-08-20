@@ -23,8 +23,9 @@ class UpdateTemplateCommand extends BaseCommand {
         });
 
         return solver.fetch(event.source, {
-            alias: event.alias,
-            skipCache: o.skipCache
+            force: true,
+            skipCache: true,
+            alias: event.alias
         }).then(_ => {
             this.logger.info('√ Template successfully added');
         });
@@ -38,12 +39,6 @@ class UpdateTemplateCommand extends BaseCommand {
 
         cmd.argument('[alias]', 'Save template with [alias].', /.*/);
 
-        cmd.option('--skip-cache',
-            'Force download template even if its cached.',
-            prog.BOOL,
-            UpdateTemplateCommand.DEFAULTS.options.skipCache
-        );
-
         cmd.option('--templates <path>',
             '<path> to template files',
             null,
@@ -55,7 +50,6 @@ class UpdateTemplateCommand extends BaseCommand {
 UpdateTemplateCommand.DEFAULTS = {
     pathSolver: resolve,
     options: {
-        skipCache: false,
         templates: '~/.core.io/templates'
     }
 };
