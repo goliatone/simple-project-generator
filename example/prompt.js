@@ -1,7 +1,6 @@
 'use strict';
 
-module.exports = [
-    {
+module.exports = [{
         type: 'input',
         name: 'name',
         message: 'What\'s the project\'s name'
@@ -10,13 +9,13 @@ module.exports = [
         type: 'input',
         name: 'license',
         message: 'What\'s is the license',
-        default: function () {
+        default: function() {
             return 'MIT';
         }
     },
     {
         type: 'input',
-        name: 'descripton',
-        message: 'Short project descripton'
+        name: 'description',
+        message: 'Short project description'
     }
 ];
