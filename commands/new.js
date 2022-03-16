@@ -4,7 +4,7 @@
 const BaseCommand = require('base-cli-commands').BaseCommand;
 
 const extend = require('gextend');
-const Cookiecutter = require('../lib');
+const CookieCutter = require('../lib');
 const resolve = require('path').resolve;
 const untildify = require('untildify');
 
@@ -22,7 +22,7 @@ class GenerateCommand extends BaseCommand {
         o.templates = event.pathSolver(o.templates);
         console.log('templates path', o.templates);
 
-        let solver = new Cookiecutter();
+        let solver = new CookieCutter();
 
         return solver.run({
             uri: event.template,

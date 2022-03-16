@@ -1,11 +1,12 @@
 #!/usr/bin/env node
+
 'use strict';
 
 const CliApp = require('base-cli-commands').CliApp;
 
 const app = new CliApp({
     commands: require('../commands'),
-    package: require('../package.json')
+    package: require('../package.json'),
 });
 
 app.run(process.argv);
