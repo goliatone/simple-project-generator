@@ -56,7 +56,8 @@ pids
 logs
 results
 
+example
 npm-debug.log
-node_modules
+node_modules*
 */.repl_history
 */.caretaker_*
