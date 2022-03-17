@@ -36,9 +36,10 @@ class ListTemplatesCommand extends BaseCommand {
     static describe(prog, cmd) {
         cmd.option(
             '--templates <path>',
-            '<path> to template files',
-            prog.STRING,
-            ListTemplatesCommand.DEFAULTS.options.templates
+            '<path> to template files', {
+                validator: prog.STRING,
+                default: ListTemplatesCommand.DEFAULTS.options.templates
+            }
         );
     }
 }
