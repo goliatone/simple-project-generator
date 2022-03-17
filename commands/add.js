@@ -48,7 +48,7 @@ class AddTemplateCommand extends BaseCommand {
 
         cmd.option('--templates <path>',
             '<path> to template files',
-            null,
+            prog.STRING,
             AddTemplateCommand.DEFAULTS.options.templates
         );
     }
