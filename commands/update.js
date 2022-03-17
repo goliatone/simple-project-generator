@@ -41,7 +41,7 @@ class UpdateTemplateCommand extends BaseCommand {
 
         cmd.option('--templates <path>',
             '<path> to template files',
-            null,
+            prog.STRING,
             UpdateTemplateCommand.DEFAULTS.options.templates
         );
     }
