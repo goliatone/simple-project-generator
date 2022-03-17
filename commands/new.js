@@ -38,50 +38,58 @@ class GenerateCommand extends BaseCommand {
     static describe(prog, cmd) {
 
         cmd.argument('<template>',
-            'Template name, local or repository',
-            /.*/,
-            GenerateCommand.DEFAULTS.source
+            'Template name, local or repository', {
+                validator: /.*/,
+                default: GenerateCommand.DEFAULTS.source
+            }
         );
 
         cmd.argument('[output]',
-            'Filename for output.',
-            /.*/,
-            GenerateCommand.DEFAULTS.output
-        );
+            'Filename for output.', {
+                validator: /.*/,
+                default: GenerateCommand.DEFAULTS.output
+            });
 
         cmd.option('--clean',
-            'Should the contents of [source] be removed before running',
-            prog.BOOL,
-            GenerateCommand.DEFAULTS.options.clean
+            'Should the contents of [source] be removed before running', {
+                validator: prog.BOOL,
+                default: GenerateCommand.DEFAULTS.options.clean
+            }
         );
 
         cmd.option('--prompt-file',
-            'Prompt file for this project',
-            prog.BOOL,
-            GenerateCommand.DEFAULTS.options.saveGuiSchema);
+            'Prompt file for this project', {
+                validator: prog.BOOL,
+                default: GenerateCommand.DEFAULTS.options.saveGuiSchema
+            }
+        );
 
         cmd.option('--dry-run',
-            'Prompt file for this project',
-            prog.BOOL,
-            GenerateCommand.DEFAULTS.options.saveGuiSchema
+            'Prompt file for this project', {
+                validator: prog.BOOL,
+                default: GenerateCommand.DEFAULTS.options.saveGuiSchema
+            }
         );
 
         cmd.option('--templates <path>',
-            '<path> to template files',
-            prog.STRING,
-            GenerateCommand.DEFAULTS.options.templates
+            '<path> to template files', {
+                validator: prog.STRING,
+                default: GenerateCommand.DEFAULTS.options.templates
+            }
         );
 
         cmd.option('--npm-cache',
-            'Make a copy of the node_modules in the cache, if available symlink it',
-            prog.BOOL,
-            GenerateCommand.DEFAULTS.options.npmCache
+            'Make a copy of the node_modules in the cache, if available symlink it', {
+                validator: prog.BOOL,
+                default: GenerateCommand.DEFAULTS.options.npmCache
+            }
         );
 
         cmd.option('--force',
-            'If destination template exists overwrite it',
-            prog.BOOL,
-            GenerateCommand.DEFAULTS.options.force
+            'If destination template exists overwrite it', {
+                validator: prog.BOOL,
+                default: GenerateCommand.DEFAULTS.options.force
+            }
         );
     }
 }

@@ -35,26 +35,29 @@ class LinkTemplateCommand extends BaseCommand {
     static describe(prog, cmd) {
 
         cmd.argument('<source>',
-            'Path to local directory containing the template',
-            /.*/
+            'Path to local directory containing the template', {
+                validator: /.*/
+            }
         );
 
         cmd.argument('[alias]',
-            'Save template with [alias].',
-            /.*/
+            'Save template with [alias].', {
+                validator: /.*/
+            }
         );
 
         cmd.option('--templates <path>',
-            '<path> to template files',
-            prog.STRING,
-            LinkTemplateCommand.DEFAULTS.options.templates
+            '<path> to template files', {
+                validator: prog.STRING,
+                default: LinkTemplateCommand.DEFAULTS.options.templates
+            }
         );
 
         cmd.option('--force',
-            'If destination template exists overwrite it',
-            prog.BOOL,
-            LinkTemplateCommand.DEFAULTS.options.force
-        );
+            'If destination template exists overwrite it', {
+                validator: prog.BOOL,
+                default: LinkTemplateCommand.DEFAULTS.options.force
+            });
     }
 }
 
