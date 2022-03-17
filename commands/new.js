@@ -68,7 +68,7 @@ class GenerateCommand extends BaseCommand {
 
         cmd.option('--templates <path>',
             '<path> to template files',
-            null,
+            prog.STRING,
             GenerateCommand.DEFAULTS.options.templates
         );
 

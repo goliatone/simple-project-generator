@@ -46,7 +46,7 @@ class LinkTemplateCommand extends BaseCommand {
 
         cmd.option('--templates <path>',
             '<path> to template files',
-            null,
+            prog.STRING,
             LinkTemplateCommand.DEFAULTS.options.templates
         );
 
