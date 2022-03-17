@@ -33,16 +33,20 @@ class UpdateTemplateCommand extends BaseCommand {
 
     static describe(prog, cmd) {
         cmd.argument('<source>',
-            'Uri to template stored in github; username/project-name',
-            /.*/
+            'Uri to template stored in github; username/project-name', {
+                validator: /.*/
+            }
         );
 
-        cmd.argument('[alias]', 'Save template with [alias].', /.*/);
+        cmd.argument('[alias]', 'Save template with [alias].', {
+            validator: /.*/
+        });
 
         cmd.option('--templates <path>',
-            '<path> to template files',
-            prog.STRING,
-            UpdateTemplateCommand.DEFAULTS.options.templates
+            '<path> to template files', {
+                validator: prog.STRING,
+                default: UpdateTemplateCommand.DEFAULTS.options.templates
+            }
         );
     }
 }
