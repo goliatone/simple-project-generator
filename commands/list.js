@@ -20,15 +20,15 @@ class ListTemplatesCommand extends BaseCommand {
             cachePath: o.templates
         });
 
-        return solver.list(o).then((templates=[])=> {
-            if(templates.length === 0) {
+        return solver.list(o).then((templates = []) => {
+            if (templates.length === 0) {
                 this.logger.info('No templates available.');
             } else {
                 this.logger.info('Templates:');
                 this.logger.info(templates);
                 this.logger.info();
             }
-            
+
             return templates;
         });
     }
@@ -37,7 +37,7 @@ class ListTemplatesCommand extends BaseCommand {
         cmd.option(
             '--templates <path>',
             '<path> to template files',
-            null,
+            prog.STRING,
             ListTemplatesCommand.DEFAULTS.options.templates
         );
     }
