@@ -34,22 +34,26 @@ class AddTemplateCommand extends BaseCommand {
 
     static describe(prog, cmd) {
         cmd.argument('<source>',
-            'Uri to template stored in github; username/project-name',
-            /.*/
-        );
+            'Uri to template stored in github; username/project-name', {
+                validator: /.*/
+            });
 
-        cmd.argument('[alias]', 'Save template with [alias].', /.*/);
+        cmd.argument('[alias]', 'Save template with [alias].', {
+            validator: /.*/
+        });
 
         cmd.option('--skip-cache',
-            'Force download template even if its cached.',
-            prog.BOOL,
-            AddTemplateCommand.DEFAULTS.options.skipCache
+            'Force download template even if its cached.', {
+                validator: prog.BOOL,
+                default: AddTemplateCommand.DEFAULTS.options.skipCache
+            }
         );
 
         cmd.option('--templates <path>',
-            '<path> to template files',
-            prog.STRING,
-            AddTemplateCommand.DEFAULTS.options.templates
+            '<path> to template files', {
+                validator: prog.STRING,
+                default: AddTemplateCommand.DEFAULTS.options.templates
+            }
         );
     }
 }
